@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
    ListView list;
    //AlertDialog alertdialog;
 
-    GestureDetector gesdec;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         url = mydata.readURL(this);
         ad=new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,title);
         list.setAdapter(ad);
-
-        gesdec = new GestureDetector(MainActivity.this, new MyGestureListener());
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,20 +114,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-  private class MyGestureListener extends  GestureDetector.SimpleOnGestureListener{
-      @Override
-      public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
-           float diffx=e2.getX() - e1.getX();
-           float diffy=e2.getY() - e1.getY();
 
-           if(Math.abs(diffx) > Math.abs(diffy)){
-               if(Math.abs(diffx) > 100 && Math.abs(velocityX)>100 ){
-                   if(diffx > 0){
-                       Toast.makeText(getApplicationContext(), "aaj.kj", Toast.LENGTH_SHORT).show();
-                   }
-               }
-           }
-          return true;
-      }
-  }
 }

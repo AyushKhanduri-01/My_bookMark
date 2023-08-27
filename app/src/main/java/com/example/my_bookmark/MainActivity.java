@@ -79,7 +79,32 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(Intent.ACTION_VIEW,webpage));
 
             }
+
         });
+         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+             @Override
+             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                 AlertDialog.Builder db = new AlertDialog.Builder(MainActivity.this);
+                 db.setTitle("Delete");
+                 db.setMessage("Are you sure?");
+                 db.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialogInterface, int i) {
+
+                     }
+                 });
+                 db.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialogInterface, int ii) {
+                         title.remove(title.get(i));
+                         url.remove(url.get(i));
+                         ad.notifyDataSetChanged();
+                     }
+                 }).show();
+                 db.create();
+                 return false;
+             }
+         });
 
     }
 

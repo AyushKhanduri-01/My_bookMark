@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String link=url.get(i);
-                Toast.makeText(MainActivity.this, ""+link, Toast.LENGTH_SHORT).show();
                 Uri webpage = Uri.parse(link);
                 startActivity(new Intent(Intent.ACTION_VIEW,webpage));
 
